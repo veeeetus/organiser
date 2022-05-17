@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+<div class="row m-1 p-1 ">
+    <div class="col-md-3 float-left">
+        {% include '_messages.html' %}
+        <p class="text-center" style="margin-top:30%;"></p>
+    </div>
+    <div class="col-md-3 float-left" style="margin-left: 12%;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 formtext text-center">
+                        Register
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <form action="" method="post">
+                            {{ form.hidden_tag() }}
+                        
+                            {{ form.username.label(class="formtext") }}<br>
+                            {{ form.username(size=32, class="form-control", autocomplete="off") }}<br>
+                            {% for error in form.username.errors %} 
+                            <span style="color: red;">{{[ error ]}}</span>
+                            {% endfor %}
+                        
+                        
+                            {{ form.email.label(class="formtext") }}<br>
+                            {{ form.email(size=80, class="form-control", autocomplete="off") }}<br>
+                            {% for error in form.email.errors %} 
+                            <span style="color: red;">{{[ error ]}}</span>
+                            {% endfor %}
+                        
+                        
+                            {{ form.password.label(class="formtext") }}<br>
+                            {{ form.password(size=32, class="form-control", autocomplete="off") }}<br>
+                            {% for error in form.password.errors %} 
+                            <span style="color: red;">{{[ error ]}}</span>
+                            {% endfor %}
+                        
+                        
+                            {{ form.password2.label(class="formtext") }}<br>
+                            {{ form.password2(size=32, class="form-control", autocomplete="off") }}<br>
+                            {% for error in form.password2.errors %} 
+                            <span style="color: red;">{{[ error ]}}</span>
+                            {% endfor %}
+                        
+                            {{ form.submit(class="btn btn-dark") }}
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

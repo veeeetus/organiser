@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+
+{% block content %} 
+<div class="row m-2 p-2 ">
+
+    <div class="col-md-3 float-left">
+        {% include '_messages.html' %}
+        <p class="text-center" style="margin-top:30%;"></p> 
+    </div>
+    <div class="col-md-7 float-left" style="margin-left: 12%; margin-top: 3%;">
+    <form action="" method="post" class="col-md-4 m-2">
+        <h1>Edit profile</h1>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label(class="formtext") }}<br>
+            {{ form.username(size=32, class="form-control", autocomplete="off") }}<br>
+            {% for error in form.username.errors %} 
+                <span style="color: red;">{{[ error ]}}</span>
+            {% endfor %}    
+        </p>
+        <p>
+            {{ form.about_me.label(class="formtext") }}<br>
+            {{ form.about_me(size=140, class="form-control", autocomplete="off") }}<br>
+            {% for error in form.about_me.errors %} 
+                <span style="color: red;">{{[ error ]}}</span>
+            {% endfor %}    
+        </p>
+        <p>
+            {{ form.submit(class="btn btn-dark") }}
+        </p>
+    </form>
+</div>
+{% endblock %}

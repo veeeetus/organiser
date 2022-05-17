@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+<div class="row m-2 p-2 ">
+    <div class="col-md-3 float-left">
+        {% include '_messages.html' %}
+        <p class="text-center" style="margin-top:30%;">
+            Here is a feature that allows you to move tasks between: <b>todo doing </b> and <b>done</b>. <br> <br> <br>
+            <b>WARNING</b>  <br>
+            !! You can't move tasks backwards !! <br> <br> <br>
+            Tip: You probably noticed but to make sure you see it, when you add task it's default phase is always todo ;)
+        </p>
+    </div>
+    <div class="col-md-3 float-left" style="margin-left: 12%; margin-top: 3%;">
+        <h1>Move Task</h1>
+        <form action="{{ url_for('move') }}" method="post">
+            {{ moveform.hidden_tag() }} 
+            
+                {{ moveform.title.label(class="formtext") }}<br>
+                {{ moveform.title(class="form-control", autocomplete="off") }}<br>
+                {% for error in moveform.title.errors %} 
+                    <span style="color: red;">{{[ error ]}}</span>
+                {% endfor %}
+                
+                {{ moveform.phase.label(class="formtext") }}<br>
+                {{ moveform.phase(style="list-style-type: none;", class="form-control-input", class="formtext") }}<br>
+                {% for error in moveform.phase.errors %} 
+                    <span style="color: red;">{{[ error ]}}</span> 
+                {% endfor %}
+
+                {{ moveform.submit(class="btn btn-dark") }}
+        </form>
+    </div>
+</div>
+{% endblock %}

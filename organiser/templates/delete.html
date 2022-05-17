@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<div class="row m-2 p-2">
+    <div class="col-md-3 float-left">
+        {% include '_messages.html' %}
+        <p class="text-center" style="margin-top:30%;">
+            Here is a delete page, yes you are deleting tasks you don't want here ;)
+            <br> <br> <br>
+            Just don't delete good ones!
+            <br> <br> <br>
+            Ducks are awesome in my opinion, <br> really nice friends.
+        </p>
+    </div>
+    <div class="col-md-3 float-left" style="margin-left: 12%; margin-top: 3%;">
+        <h1>Delete Task</h1> <br>
+        <form action="{{ url_for('delete') }}" method="post">
+            {{ delform.hidden_tag() }}
+            <p>
+                {{ delform.title.label(class="formtext") }}<br>
+                {{ delform.title(class="form-control", autocomplete="off") }}<br> 
+                {% for error in delform.title.errors %} 
+                    <span style="color: red;">{{[ error ]}}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ delform.submit(class="btn btn-dark") }}
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+html {
+    height: 100%;
+}
+body {
+    background: linear-gradient(to bottom right, white, black);
+}
+.invisiblehr {
+    clear: both;
+    visibility: hidden;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.user {
+    text-align: left;  margin-top: 5%;
+}
+
+@media screen and (min-width: 900px) {
+    .text {
+        font-size: xx-large;
+    }
+    .formtext {
+        font-size: x-large;
+    }
+  }
+
+  .link {
+      text-decoration: none;
+      color:black;
+  }
+
+  .link:hover {
+    color:darkgrey;
+  }
+
+ .show:hover {
+    display:block;
+  }
+.hide {
+    display: none;
+}

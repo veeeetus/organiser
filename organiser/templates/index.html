@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<div class="row m-2 p-2 ">
+
+    <h1 class="text-center">Hello, {{ current_user.username }}!</h1>
+    <div class="col-md-3 float-left">
+        {% include '_messages.html' %}
+        <p class="text-center" style="margin-top:30%;">
+            So hello, this is brief introduction to me and my site :D <br> <br>
+            My name is David, my main goal is to become a backend developer in google or similar big company. <br> <br>
+            In this page you just simply add a task by filling form located next to this text.
+        </p> 
+    </div>
+    <div class="col-md-3 float-left" style="margin-left: 12%; margin-top: 3%;">
+        <h2 class="text-center">Add Task</h2>
+            <form action="" method="post">
+                
+                {{ addform.hidden_tag() }} 
+
+                    {{ addform.title.label(class="formtext") }}<br> 
+                    {{ addform.title(size=20, class="form-control", autocomplete="off") }}<br>
+                    {% for error in addform.title.errors %}
+                        <span style="color: red;">{{[ error ]}}</span>
+                    {% endfor %}
+
+                    {{ addform.body.label(class="formtext") }}<br>
+                    {{ addform.body(class="form-control", autocomplete="off") }}<br>
+                    {% for error in addform.body.error %} 
+                        <span style="color: red;">{{[ error ]}}</span> 
+                    {% endfor %}
+                    
+                    {{ addform.deadline.label(class="formtext") }}
+                    {{ addform.deadline(class='form-control') }}
+                    {% for error in addform.deadline.error %}
+                        <span style="color: red;">{{[ error ]}}</span>
+                    {% endfor %}
+
+                    <br>
+
+                    {{ addform.submit(class="btn btn-dark") }}
+            </form>
+
+    </div>
+    <div class="col-md-3 float-left text-center" style="margin-left: 10%;">
+        {% for x in notifications %} 
+            <div style="border-style: hidden; border-radius: 10px; background: linear-gradient(to bottom right, white, grey); margin-top: 7%; color: black">{{ x }}</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

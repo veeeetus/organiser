@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<div class="row m-2 p-2 ">
+    <div class="col-md-3 float-left">
+        {% include '_messages.html' %}
+        <p class="text-center" style="margin-top:30%;">
+            And here is main part of my page, <br> you can see your tasks here :DD <br> <br>
+            If you <b>hover</b> on any task that is: <br> <b>todo / doing</b> <br> you will see it's deadline! <br> <br>
+            Have a nice and productive time! <br> <br> <b> Good luck! </b>
+        </p>    
+    </div>
+    <div class="col-md-6 float-left" style="margin-left: 15%; margin-top: 3%;">
+        <table class="table">
+            <thead>
+                <th class="col-md-1 formtext text-center">
+                    TODO
+                </th>
+                <th></th>
+                <th class="col-md-1 formtext text-center">
+                    DOING
+                </th>
+                <th></th>
+                <th class="col-md-1 formtext text-center">
+                    DONE
+                </th>
+            </thead>
+            <tbody>
+                {% for i in range(length) %} 
+                <tr>
+                    {% if todo[i] %} 
+                            <td class="col-md-1 text-white bg-danger rounded justify-content-center text-center" title="deadline: {{ todo[i].deadline.date() }}">
+                                    <b>{{ todo[i].title }}</b><br>
+                                    <i>{{ todo[i].body }}  </i> <br>
+                            </td>
+                    {% else %} 
+                            <td class="col-md-1 justify-content-center"></td>
+                    {% endif %}
+                            <td class="col-md-1 justify-content-center"></td>
+                    {% if doing[i] %}
+                            <td class="col-md-1 text-white bg-warning rounded justify-content-center text-center" title="deadline: {{ doing[i].deadline.date() }}">
+                                    <b>{{ doing[i].title }}</b><br>
+                                    <i>{{ doing[i].body }}</i> <br>
+                            </td>
+                        {% else %} 
+                            <td class="col-md-1 justify-content-center"></td>
+                    {% endif %}
+                            <td class="col-md-1 justify-content-center"></td>
+                    {% if done[i] %} 
+                            <td class="col-md-1 text-white bg-success rounded justify-content-center text-center">
+                                    <b>{{ done[i].title }}</b><br>
+                                    <i>{{ done[i].body }}</i> <br>
+                            </td>
+                    {% else %} 
+                            <td class="col-md-1 justify-content-center"></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
