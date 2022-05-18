@@ -10,11 +10,12 @@
  but it was really fun to work on my own one. I learned a lot through creating this application, I've 
  watched a lot of guides as well as googled a lot of things because this all was new to me and still is, I 
  am still learning a lot of new skills and tricks with creating applications and working with vscode itself 
- like installing commands to paths or using terminal setting up virtual environment or operating with python 
- interpreter. I like minimalism so I decided to keep it simple and do not apply many effects, so it's smooth 
- sharp and dark themed site, because thta's what I personally like. I was having hard time with styling 
- things and placing stuff over pages but after a lot of stack overflow and testing, trying I made it look 
- nice at least for me I hope it really is nice because I was doing my best while developing this application.
+ like installing commands to paths or using terminal and setting up virtual environment or operating with 
+ python interpreter. I like minimalism so I decided to keep it simple and do not apply many effects, so it's 
+ smooth sharp and dark themed site, because that's what I personally like. I was having hard time with 
+ styling things and placing stuff over pages but after a lot of stack overflow and testing/trying I made it 
+ look nice, at least for me. I hope it really is nice because I was doing my best while developing this 
+ application.
 </p>
 <br> <hr/> <br>
 <p>
@@ -40,10 +41,10 @@ Also on the right side of form that lets you add a task you will see <br> how ma
 each task (up to 8 tasks which are closest to deadline)  <br>
 Here you can also as I mentioned add your tasks. <br> <br>
 It works as a simple organising application which lets you add your tasks, assignments, appointments, 
-everything you wish and keeps it saved on your account, other user can't see them. It has some cool features 
-as hovering on a task to see a deadline or similar stuff I will write about it a bit later. <br>
+everything you wish and keeps it saved on your account, other users can't see them. It has some cool 
+features as hovering on a task to see a deadline or similar stuff I will write about it a bit later. <br>
 <hr/><br>
-<h2> How to add a task </h2>
+<h2> How to add a task </h2> <br>
 Firstly you add a title which works as a pointer to that task (later on you can move task or delete it by 
 its title), titles are unique but for every user so there can be same title saved in database many times but 
 it will always have different user's id. <br> <br>
@@ -67,9 +68,8 @@ it is, so you can delete even from done table. <br> <br>
 </p>
 <hr/>
 <p>
-<h2> Structure </h2>
- Going from top of my explorer I have insides of my package located in folder called <b>organiser</b>. <br>
- Here first folder that is interesting is <b>/static</b> here i keep my css although most of css I used 
+<h2> Structure </h2> <br>
+ Going from the top of my explorer I have insides of my package located in folder called <b>organiser</b>. <br>Here first folder that is interesting is <b>/static</b> here i keep my css although most of css I used 
  comes from bootstrap because I am not strong in front end at all, I find it hard to work with css and html.
  Then there is <b>/templates</b> where I keep all my html files and I will describe them one by one now.<br> 
  <br>
@@ -77,19 +77,19 @@ it is, so you can delete even from done table. <br> <br>
 
 <p>
  <b>_messages.html</b> -> Here is little subtemplate for my error annoucnments which I include to each html
- instead of pasting whole code everywhere I just {% include %} it, I could keep it in my base template but t
- hen it would be much harder for me to place divs in my main pages so I decided to make it in subtemplate 
+ instead of pasting whole code everywhere I just {% include %} it, I could keep it in my base template but 
+ then it would be much harder for me to place divs in my main pages so I decided to make it in subtemplate 
  format.
 </p>
 </br>
 <p>
- <b>base.html</b> -> This is My base template which my other html files are extedning, it keeps basic html 
+ <b>base.html</b> -> This is My base template which my other html files are extending, it keeps basic html 
  structure and a bootstrap navbar as well as my css linking.
 </p>
 </br>
 <p>
- <b>delete.html</b> -> Page holding one of features it is really simple which is to delete tasks that
- we don't want to keep anymore, it also has little instruction for users
+ <b>delete.html</b> -> Page holding one of main features it is really simple because it's used to delete 
+ tasks that we don't want to keep anymore, it also has little instruction for users
 </p>
 </br>
 <p>
@@ -102,12 +102,12 @@ it is, so you can delete even from done table. <br> <br>
  my app, it also holds a form by which we can add task, it also has feature which tells you how many days
  are left until deadline that you set while adding task, I wrote little function that counts days by
  taking actual date by datetime.utcnow().date() and then makes a divison with deadline.date() it lets you 
- know how many days are until your deadline for each task.
+ know how many days are until your deadline for each task (up to 8 closest to deadline on index page).
 </p>
 </br>
 <p>
  <b>login.html</b> -> Name tells by itself, it is just login page with form which after submittin login 
- credentials query for an account and then compare hashes and log user in if they are matching.
+ credentials query for an account and then compare password hashes and log user in if they are matching.
 </p>
 </br>
 <p>
@@ -116,7 +116,7 @@ it is, so you can delete even from done table. <br> <br>
 </p>
 </br>
 <p>
- <b>register.html</b> -> Here also it says by itself, registration form in html page
+ <b>register.html</b> -> Here also it says by itself, registration form in html page, it takes form after submittion runs query and if no errors appear it commits and register user in database.
 </p>
 </br>
 <p>
@@ -131,9 +131,9 @@ it is, so you can delete even from done table. <br> <br>
 </p>
 </br>
 <p>
- Features are divided to different pages to allow mobile users to use website comfortably as well as 
+ Features are divided into different pages to allow mobile users to use website comfortably as well as 
  computer or laptop users, but I'm too bad with front-end and I designed it only for my laptop.
-</p>
+</p> <br>
 <hr/></br>
 <p>
  after <b>/template</b> there are python files first one is: <br> <br>
@@ -171,9 +171,30 @@ work with my database and check for errors or test features before implement the
 <hr/><br><br>
 <p> 
 There also is directory called <b>/migrations</b> it keeps migration scripts for my database it lets me 
-operate very fast2 while working on my database because these scripts are very easy to understand you write 
+operate very fast while working on my database because these scripts are very easy to understand you write 
 what you want in <b>models.py</b> then run command flask db migrate and then flask db upgrade and voila 
 database has new tables or rows that you wanted to add. And if my databse doesn't work after it or something 
 goes wrong I can very fast use flask db downgrade delete migration script and redo new one by again running 
-first two command after making changes to <b>models.py</b>
-</p># organiser
+first two command after making changes to <b>models.py</b>. It is very intuitive working with sqlalchemy and 
+sqlite, big + of this is that later on while deploying app on net I wouldn't have to worry about changing my 
+sql code because it is very universal in this form and for example I could host this app on herokus 
+postgresql database without applying any changes to my database which is amazing in my opinion.
+</p> <br>
+<hr/>
+<br>
+<p>
+<h2> To sum up </h2>
+<br>
+CS50x was amazing I learned a lot regarding problem solving, thinking outside of box, to not give up, some 
+pretty useful technologies, languages, it helped me learn and will be helping even more because I'm heading 
+to CS50@ after completing CS50x. I would recommend this course from the bottom of my heart to everyone who 
+has ambitions and wants to learn compyter science and to get basic view of things in it. For someone who 
+wants to become a web dev cs50x is nice introduction and then CS50W completes it. It is amazing to see how 
+whole cs50s team works especially prof David J. Malan who gives amazing lectures with Brian Yu and Doug 
+Lloyd shorts which were helping me understand little things a lot. For example recursion was explained by 
+him perfectly in my opinion. I am grateful for whole effort that was given to let us learn CS in very 
+comfortable and enjoyable way.
+Thank you all for making it possible.
+<br> <br>
+Love ~Vetus
+</p>
